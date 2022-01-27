@@ -48,8 +48,18 @@ function makeGrid (col, rows){
         bttnSize.textContent ='Resize'
         bttnSize.addEventListener('click',  () => {
             let user = prompt ("Inupt Dimensions")
-            if (user === null)
-
+            //user can only put value greater than 1 and less than 100, 
+            //if user input does not meet requirments grid resets to 16,16
+            if (user === null || user <= 1 || user >= 100 ){
+                reSet()
+                makeGrid (16,16)
+                blackDraw ()
+            }
+            else {
+                reSet()
+                makeGrid (user,user)
+                blackDraw ()
+            }
         })
         bttnContainer.appendChild(bttnSize).classList.add('btn')
     
